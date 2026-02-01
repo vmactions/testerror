@@ -15,6 +15,7 @@ jobs:
       uses: vmactions/openindiana-vm@main
       with:
         debug-on-error: true
+        debug: true
         nat: |
           "8000": "80"
         envs: 'TestingDomain TEST_PREFERRED_CHAIN TEST_ACME_Server INPUT_*'
