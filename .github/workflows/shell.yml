@@ -10,9 +10,9 @@ jobs:
     steps:
     - name: Set envs
       run: echo "TestingDomain=${{steps.tunnel.outputs.server}}" >> $GITHUB_ENV
-    - name: Starting a freebsd VM, please wait. It may take 5 minutes
+    - name: Starting a VM, please wait. It may take 5 minutes
       id: shell
-      uses: vmactions/openindiana-vm@main
+      uses: vmactions/freebsd-vm@main
       with:
         debug-on-error: true
         #debug: true
