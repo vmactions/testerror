@@ -1,0 +1,26 @@
+
+name: shell
+
+on: [push, workflow_dispatch]
+
+jobs:
+  runshell:
+    runs-on: ubuntu-latest
+    name: Start a VM shell
+    steps:
+    - name: Set envs
+      run: echo "TestingDomain=${{steps.tunnel.outputs.server}}" >> $GITHUB_ENV
+    - name: Starting a freebsd VM, please wait. It may take 5 minutes
+      id: shell
+      uses: vmactions/openindiana-vm@main
+      with:
+        debug-on-error: true
+        nat: |
+          "8000": "80"
+        envs: 'TestingDomain TEST_PREFERRED_CHAIN TEST_ACME_Server INPUT_*'
+        copyback: false
+        prepare: exit 1
+        run: |
+          exit 1
+          
+
